@@ -40,11 +40,11 @@ const reset = ()=> {
 /**
  * @desc Devuelve la clase dependiendo la cantidad de cards
  *       que le pasemos como parametro
- * @method typeCard
+ * @method typeCardClass
  * @params {Number} countCards 
  * @returns String
  */
-const typeCard = countCards => {
+const typeCardClass = countCards => {
     return countCards<6 ? 'cardRed' : 'cardBlue';
 }
 
@@ -54,7 +54,7 @@ const typeCard = countCards => {
  * @params {Number} countCards 
  */
 const fillContainer = countCards => {
-    typeCard = typeCard(countCards);
+    typeCard = typeCardClass(countCards);
     for (let i = 0; i < countCards; i++) {
         containerCardsNumbers.innerHTML += `
         <div class=${typeCard}>
