@@ -9,20 +9,20 @@ let typeCard = '';
 
 /**
  * @desc Deshabilita el botón
- * @param {Boolean} valueDisabled 
+ * @params {Boolean} valueDisabled 
  */
-const __handlerButtonDisabled = valueDisabled => {
+const handlerButtonDisabled = valueDisabled => {
     buttonStart.disabled = valueDisabled;
 }
 
 /**
  * @desc Tiempo para el reseteo de las variables
- * @method __timeFill
- * @param {Number} time 
+ * @method timeFill
+ * @params {Number} time 
  */
-const __timeFill = time => {
+const timeFill = time => {
     let timeExpired = time * 1000;
-    __handlerButtonDisabled(true);
+    handlerButtonDisabled(true);
     setTimeout(()=> {
         reset();
     }, timeExpired);
@@ -33,28 +33,28 @@ const __timeFill = time => {
  * @method reset
  */
 const reset = ()=> {
-    __handlerButtonDisabled(false);
+    handlerButtonDisabled(false);
     containerCardsNumbers.innerHTML = '';
 }
 
 /**
  * @desc Devuelve la clase dependiendo la cantidad de cards
  *       que le pasemos como parametro
- * @method __typeCard
- * @param {Number} countCards 
+ * @method typeCard
+ * @params {Number} countCards 
  * @returns String
  */
-const __typeCard = countCards => {
+const typeCard = countCards => {
     return countCards<6 ? 'cardRed' : 'cardBlue';
 }
 
 /**
  * @desc Llena el contendor con el numero de cards
- * @method __fillContainer
- * @param {Number} countCards 
+ * @method fillContainer
+ * @params {Number} countCards 
  */
-const __fillContainer = countCards => {
-    typeCard = __typeCard(countCards);
+const fillContainer = countCards => {
+    typeCard = typeCard(countCards);
     for (let i = 0; i < countCards; i++) {
         containerCardsNumbers.innerHTML += `
         <div class=${typeCard}>
@@ -72,17 +72,17 @@ buttonStart.addEventListener('click', ()=> {
     let timeValue = Number(inputSeconds.value);
     let randomNumber = parseInt(Math.random() * 15) + 1;
     reset();
-    __fillContainer(randomNumber);
+    fillContainer(randomNumber);
     if(controlReset)
-    __timeFill(timeValue);
+        timeFill(timeValue);
 });
 
 /**
  * @desc Valida y pinta el fondo del input
- * @method __handlerInputlistener
- * @param {Number} seconds 
+ * @method handlerInputlistener
+ * @params {Number} seconds 
  */
-const __handlerInputlistener = seconds => {
+const handlerInputlistener = seconds => {
     if(seconds>10 || seconds<2 || seconds === ''){
         disabledButton = true;
         inputSeconds.style.background = 'rgba(255,0,0,0.5)';
@@ -96,7 +96,7 @@ const __handlerInputlistener = seconds => {
 
 /*
 Listener que escucha al input, llama a las funciones de
-__handlerInputlistener --> Pinta el fondo del input
+handlerInputlistener --> Pinta el fondo del input
 habilita o deshabilita el botón
 */
 /**
@@ -105,8 +105,8 @@ habilita o deshabilita el botón
  */
 inputSeconds.addEventListener('input', event => {
     let seconds = event.target.value;
-    __handlerInputlistener(seconds);
-    __handlerButtonDisabled(disabledButton);
+    handlerInputlistener(seconds);
+    handlerButtonDisabled(disabledButton);
 });
 
 /**
@@ -118,11 +118,11 @@ selectorOption.addEventListener('change', event => {
     if(option === 'no'){
         inputSeconds.disabled = true;
         controlReset = false;
-        __handlerButtonDisabled(false);
+        handlerButtonDisabled(false);
     }
     else{
-        __handlerInputlistener(inputSeconds.value);
-        __handlerButtonDisabled(disabledButton);
+        handlerInputlistener(inputSeconds.value);
+        handlerButtonDisabled(disabledButton);
         inputSeconds.disabled = false;
         controlReset = true;    
     }
