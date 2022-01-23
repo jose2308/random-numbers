@@ -9,7 +9,7 @@ let typeCard = '';
 
 /**
  * @desc Deshabilita el botón
- * @param {Boolean} valueDisabled 
+ * @params {Boolean} valueDisabled 
  */
 const __handlerButtonDisabled = valueDisabled => {
     buttonStart.disabled = valueDisabled;
@@ -18,7 +18,7 @@ const __handlerButtonDisabled = valueDisabled => {
 /**
  * @desc Tiempo para el reseteo de las variables
  * @method __timeFill
- * @param {Number} time 
+ * @params {Number} time 
  */
 const __timeFill = time => {
     let timeExpired = time * 1000;
@@ -41,7 +41,7 @@ const reset = ()=> {
  * @desc Devuelve la clase dependiendo la cantidad de cards
  *       que le pasemos como parametro
  * @method __typeCard
- * @param {Number} countCards 
+ * @params {Number} countCards 
  * @returns String
  */
 const __typeCard = countCards => {
@@ -51,7 +51,7 @@ const __typeCard = countCards => {
 /**
  * @desc Llena el contendor con el numero de cards
  * @method __fillContainer
- * @param {Number} countCards 
+ * @params {Number} countCards 
  */
 const __fillContainer = countCards => {
     typeCard = __typeCard(countCards);
@@ -80,7 +80,7 @@ buttonStart.addEventListener('click', ()=> {
 /**
  * @desc Valida y pinta el fondo del input
  * @method __handlerInputlistener
- * @param {Number} seconds 
+ * @params {Number} seconds 
  */
 const __handlerInputlistener = seconds => {
     if(seconds>10 || seconds<2 || seconds === ''){
