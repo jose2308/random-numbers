@@ -1,0 +1,82 @@
+:root {
+    --border-box-custom:1px solid green;
+    --border-box-radius: 25px;
+    --container-text-center:center;
+    --height-card-text:200px;
+    --height-card-text-minor:110px;
+    --font-size-text:80px;
+    --font-size-text-minor:50px;
+    --display-flex-text:flex;
+    --align-item-text:center;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-gap: 10px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.cardRed {
+    display: var(--display-flex-text);
+    align-items: var(--align-item-text);
+    border: var(--border-box-custom);
+    height: var(--height-card-text);
+    background: red;
+    border-radius: var(--border-box-radius);
+    color:white;
+    font-size: var(--font-size-text);
+    justify-content: center;
+}
+
+.cardBlue {
+    display: var(--display-flex-text);
+    align-items: var(--align-item-text);
+    border: var(--border-box-custom);
+    height: var(--height-card-text);
+    background: blue;
+    border-radius: var(--border-box-radius);
+    color: white;
+    font-size: var(--font-size-text);
+    justify-content: center;
+}
+
+h1 {
+    text-align: center;
+}
+.containerBar {
+    width: 60%;
+    margin: 10px auto;
+    height: 20px;
+    padding: 10px;
+}
+
+#barReset {
+    height: 15px;
+    border: var(--border-box-custom);
+    border-radius: var(--border-box-radius);
+}
+
+@media (max-width: 500px) {
+    h1 {
+        font-size: 20px;
+    }
+    .container {
+        grid-template-columns: repeat(3,1fr);
+    }
+
+    .cardRed {
+        font-size: var(--font-size-text-minor);
+        height: var(--height-card-text-minor);
+    }
+    .cardBlue {
+        font-size: var(--font-size-text-minor);
+        height: var(--height-card-text-minor);
+    }
+
+    .containerControls {
+        display: flex;
+        flex-direction: column;
+    }
+  }
