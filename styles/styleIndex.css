@@ -1,5 +1,5 @@
 :root {
-    --border-box-custom:1px solid green;
+    --border-box-custom:2px solid green;
     --border-box-radius: 25px;
     --container-text-center:center;
     --height-card-text:200px;
@@ -20,13 +20,13 @@
 
 .cardRed {
     display: var(--display-flex-text);
-    align-items: var(--align-item-text);
-    border: var(--border-box-custom);
-    height: var(--height-card-text);
+    align-items: var(--align-item-text, center);
+    border: var(--border-box-custom, 5px solid green);
+    height: var(--height-card-text, 200px);
     background: red;
-    border-radius: var(--border-box-radius);
+    border-radius: var(--border-box-radius, 1.5rem);
     color:white;
-    font-size: var(--font-size-text);
+    font-size: var(--font-size-text, 5rem);
     justify-content: center;
 }
 
