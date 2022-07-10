@@ -1,2 +1,2 @@
 # random-numbers
-Es proyecto está creado con javascript vanilla
+Creacion de numeros randoms
