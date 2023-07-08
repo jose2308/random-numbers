@@ -21,18 +21,18 @@ const handlerButtonDisabled = valueDisabled => {
  * @params {Number} time 
  */
 const timeFill = time => {
-    let timeExpired = time * 1000;
+    const timeReset = time * 1000;
     handlerButtonDisabled(true);
-    setTimeout(()=> {
-        reset();
-    }, timeExpired);
+    setTimeout(() => {
+      reset();
+    }, timeReset);
 }
 
 /**
  * @desc Habilita el botón y limpia el contenedor
  * @method reset
  */
-const reset = ()=> {
+const reset = () => {
     handlerButtonDisabled(false);
     containerCardsNumbers.innerHTML = '';
 }
@@ -45,7 +45,7 @@ const reset = ()=> {
  * @returns String
  */
 const typeCardClass = countCards => {
-    return countCards<6 ? 'cardRed' : 'cardBlue';
+    return countCards < 8 ? 'card-red' : 'card-blue';
 }
 
 /**
@@ -69,12 +69,11 @@ const fillContainer = countCards => {
  * @method addEventListener escucha el botón al hacer click
  */
 buttonStart.addEventListener('click', ()=> {
-    let timeValue = Number(inputSeconds.value);
-    let randomNumber = parseInt(Math.random() * 15) + 1;
+    const timeValue = Number(inputSeconds.value);
+    const randomNumber = parseInt(Math.random() * 15) + 1;
     reset();
     fillContainer(randomNumber);
-    if(controlReset)
-        timeFill(timeValue);
+    if (controlReset) timeFill(timeValue);
 });
 
 /**
@@ -83,13 +82,13 @@ buttonStart.addEventListener('click', ()=> {
  * @params {Number} seconds 
  */
 const handlerInputlistener = seconds => {
-    if(seconds>10 || seconds<2 || seconds === ''){
+    if (seconds > 10 || seconds < 2 || seconds === ''){
         disabledButton = true;
-        inputSeconds.style.background = 'rgba(255,0,0,0.5)';
+        inputSeconds.setAttribute('invalid', true);
     }
-    else{
+    else {
         disabledButton = false;
-       inputSeconds.style.background = 'none';  
+       inputSeconds.removeAttribute('invalid');
     }
 }
 
@@ -103,8 +102,8 @@ habilita o deshabilita el botón
  * @desc Escucha el input y realiza las validaciones 
  * @method addEventListener Escucha las entradas del input
  */
-inputSeconds.addEventListener('input', event => {
-    let seconds = event.target.value;
+inputSeconds.addEventListener('input', ({ target }) => {
+    const seconds = target.value;
     handlerInputlistener(seconds);
     handlerButtonDisabled(disabledButton);
 });
@@ -113,14 +112,14 @@ inputSeconds.addEventListener('input', event => {
  * @desc Listener que escucha el selector
  * @method 
  */
-selectorOption.addEventListener('change', event => {
-    let option = event.target.value;
-    if(option === 'no'){
+selectorOption.addEventListener('change', ({ target }) => {
+    const option = target.value;
+    if (option === 'no'){
         inputSeconds.disabled = true;
         controlReset = false;
         handlerButtonDisabled(false);
     }
-    else{
+    else {
         handlerInputlistener(inputSeconds.value);
         handlerButtonDisabled(disabledButton);
         inputSeconds.disabled = false;

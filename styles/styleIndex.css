@@ -18,7 +18,11 @@
     padding: 10px;
 }
 
-.cardRed {
+.container-controls input[type="number"][invalid] {
+ background-color: rgba(255, 0, 0, 0.5);
+}
+
+.card-red {
     display: var(--display-flex-text);
     align-items: var(--align-item-text, center);
     border: var(--border-box-custom, 5px solid green);
@@ -30,7 +34,7 @@
     justify-content: center;
 }
 
-.cardBlue {
+.card-blue {
     display: var(--display-flex-text);
     align-items: var(--align-item-text);
     border: var(--border-box-custom);
@@ -66,16 +70,16 @@ h1 {
         grid-template-columns: repeat(3,1fr);
     }
 
-    .cardRed {
+    .car-red {
         font-size: var(--font-size-text-minor);
         height: var(--height-card-text-minor);
     }
-    .cardBlue {
+    .card-blue {
         font-size: var(--font-size-text-minor);
         height: var(--height-card-text-minor);
     }
 
-    .containerControls {
+    .container-controls {
         display: flex;
         flex-direction: column;
     }
